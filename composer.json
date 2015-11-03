@@ -1,5 +1,5 @@
 {
-  "name": "kmcgrogan/html-to-markdown-tables",
+  "name": "mcgrogan91/html-to-markdown-tables",
   "type": "library",
   "description": "An HTML-to-markdown conversion helper for PHP with table support",
   "keywords": ["markdown", "html"],
