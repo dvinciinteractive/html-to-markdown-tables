@@ -2,9 +2,9 @@
 
 namespace Mcgrogan91\HTMLToMarkdown;
 
+use League\HTMLToMarkdown\Element;
 use League\HTMLToMarkdown\ElementInterface;
 use Mcgrogan91\HTMLToMarkdown\Converter\TableConverter;
-use Mcgrogan91\HTMLToMarkdown\Converter\TrConverter;
 
 class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
 {
@@ -23,7 +23,65 @@ class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
         parent::__construct($options);
 
         $this->environment->addConverter(new TableConverter());
-        //$this->environment->addConverter(new TrConverter());
+    }
+
+    /**
+     * Convert
+     *
+     * Loads HTML and passes to getMarkdown()
+     *
+     * @param $html
+     *
+     * @return string The Markdown version of the html
+     */
+    public function convert($html)
+    {
+        if (trim($html) === '') {
+            return '';
+        }
+
+        $document = $this->createDOMDocument($html);
+
+        // Work on the entire DOM tree (including head and body)
+        if (!($root = $document->getElementsByTagName('html')->item(0))) {
+            throw new \InvalidArgumentException('Invalid HTML was provided');
+        }
+
+        $rootElement = new Element($root);
+        $this->convertChildren($rootElement);
+
+        // Store the now-modified DOMDocument as a string
+        $markdown = $document->saveHTML();
+
+        $markdown = $this->sanitize($markdown);
+
+        return $markdown;
+    }
+
+
+    /**
+     * @param string $html
+     *
+     * @return \DOMDocument
+     */
+    private function createDOMDocument($html)
+    {
+        $document = new \DOMDocument();
+
+        if ($this->getConfig()->getOption('suppress_errors')) {
+            // Suppress conversion errors (from http://bit.ly/pCCRSX)
+            libxml_use_internal_errors(true);
+        }
+
+        // Hack to load utf-8 HTML (from http://bit.ly/pVDyCt)
+        $document->loadHTML('<?xml encoding="UTF-8">' . $html);
+        $document->encoding = 'UTF-8';
+
+        if ($this->getConfig()->getOption('suppress_errors')) {
+            libxml_clear_errors();
+        }
+
+        return $document;
     }
 
     /**
@@ -44,7 +102,7 @@ class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
         }
 
         // If the node has children, convert those to Markdown first
-        if ($element->getTagName() !== "table"   && $element->hasChildren()) {
+        if ($element->getTagName() !== "table"  && $element->hasChildren()) {
             foreach ($element->getChildren() as $child) {
                 $this->convertChildren($child);
             }
