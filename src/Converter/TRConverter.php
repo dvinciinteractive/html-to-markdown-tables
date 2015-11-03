@@ -22,6 +22,6 @@ class TrConverter implements ConverterInterface
      */
     public function getSupportedTags()
     {
-        return array('table');
+        return array('tr');
     }
 }
