@@ -3,6 +3,7 @@
 namespace Mcgrogan91\HTMLToMarkdown;
 
 use Mcgrogan91\HTMLToMarkdown\Converter\TableConverter;
+use Mcgrogan91\HTMLToMarkdown\Converter\TrConverter;
 
 class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
 {
@@ -21,6 +22,7 @@ class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
         parent::__construct($options);
 
         $this->environment->addConverter(new TableConverter());
+        $this->environment->addConverter(new TrConverter());
     }
 
 }
