@@ -1,0 +1,25 @@
+{
+  "name": "kmcgrogan/html-to-markdown-tables",
+  "type": "library",
+  "description": "An HTML-to-markdown conversion helper for PHP with table support",
+  "keywords": ["markdown", "html"],
+  "homepage": "https://github.com/mcgrogan91/html-to-markdown-tables",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kyle McGrogan",
+      "email": "mcgrogan91@gmail.com",
+      "homepage": "http://www.kylemcgrogan.com",
+      "role": "Lead Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Mcgrogan91\\HTMLToMarkdown\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.3.3",
+    "league/html-to-markdown": "~4.0"
+  }
+}
