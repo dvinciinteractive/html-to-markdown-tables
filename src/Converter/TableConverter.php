@@ -3,7 +3,7 @@
 namespace Mcgrogan91\HTMLToMarkdown\Converter;
 
 use League\HTMLToMarkdown\ElementInterface;
-use League\HTMLToMarkdown\ConverterInterface;
+use League\HTMLToMarkdown\Converter\ConverterInterface;
 
 class TableConverter implements ConverterInterface
 {
