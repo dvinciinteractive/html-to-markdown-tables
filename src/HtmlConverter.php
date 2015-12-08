@@ -4,6 +4,7 @@ namespace Mcgrogan91\HTMLToMarkdown;
 
 use League\HTMLToMarkdown\Element;
 use League\HTMLToMarkdown\ElementInterface;
+use Mcgrogan91\HTMLToMarkdown\Converter\SupConverter;
 use Mcgrogan91\HTMLToMarkdown\Converter\TableConverter;
 
 class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
@@ -23,6 +24,7 @@ class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
         parent::__construct($options);
 
         $this->environment->addConverter(new TableConverter());
+        $this->environment->addConverter(new SupConverter());
     }
 
     /**
