@@ -1,6 +1,6 @@
 <?php
 
-namespace Mcgrogan91\HTMLToMarkdown\Converter;
+namespace Dvinci\HTMLToMarkdown\Converter;
 
 use League\HTMLToMarkdown\ElementInterface;
 use League\HTMLToMarkdown\Converter\ConverterInterface;

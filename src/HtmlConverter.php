@@ -1,11 +1,11 @@
 <?php
 
-namespace Mcgrogan91\HTMLToMarkdown;
+namespace Dvinci\HTMLToMarkdown;
 
 use League\HTMLToMarkdown\Element;
 use League\HTMLToMarkdown\ElementInterface;
-use Mcgrogan91\HTMLToMarkdown\Converter\SupConverter;
-use Mcgrogan91\HTMLToMarkdown\Converter\TableConverter;
+use Dvinci\HTMLToMarkdown\Converter\SupConverter;
+use Dvinci\HTMLToMarkdown\Converter\TableConverter;
 
 class HtmlConverter extends \League\HTMLToMarkdown\HtmlConverter
 {

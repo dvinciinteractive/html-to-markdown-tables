@@ -1,21 +1,20 @@
 {
-  "name": "mcgrogan91/html-to-markdown-tables",
+  "name": "dvinciinteractive/html-to-markdown-tables",
   "type": "library",
   "description": "An HTML-to-markdown conversion helper for PHP with table support",
   "keywords": ["markdown", "html"],
-  "homepage": "https://github.com/mcgrogan91/html-to-markdown-tables",
+  "homepage": "https://github.com/dvinciinteractive/html-to-markdown-tables",
   "license": "MIT",
   "authors": [
     {
       "name": "Kyle McGrogan",
-      "email": "mcgrogan91@gmail.com",
-      "homepage": "http://www.kylemcgrogan.com",
-      "role": "Lead Developer"
+      "email": "kyle.mcgrogan@dvinci.com",
+      "role": "Developer"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Mcgrogan91\\HTMLToMarkdown\\": "src/"
+      "Dvinci\\HTMLToMarkdown\\": "src/"
     }
   },
   "require": {
