@@ -14,7 +14,17 @@ class SupConverter implements ConverterInterface{
      */
     public function convert(ElementInterface $element)
     {
-        return "<sup>" . $element->getValue() . "</sup>";
+        $tag = $element->getTagName();
+        $value = trim($element->getValue());
+
+        switch ($tag) {
+            case 'sup':
+                return "<sup>" . $value . "</sup>";
+            case 'sub':
+                return "<sub>" . $value . "</sub>";
+            default:
+                return $value;
+        }
     }
 
     /**
@@ -22,6 +32,6 @@ class SupConverter implements ConverterInterface{
      */
     public function getSupportedTags()
     {
-        return ['sup'];
+        return array('sup', 'sub');
     }
 }
